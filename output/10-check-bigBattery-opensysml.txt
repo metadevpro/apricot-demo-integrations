@@ -1,0 +1,9 @@
+$ sysml drone.sysml   # REPL, then: %check Drone::Sizing::bigBattery
+✓ package Drone
+SysML v2 REPL — %help for commands, Ctrl-D to exit
+✓ Constraint bigBattery is satisfiable (z3, 19ms)
+  Drone::Sizing::capacity = 5000
+  Drone::Sizing::payload = 0
+  Drone::Sizing::takeoffMass = 25000
+  standing: satisfiable (witnessed: 1 query by solve)
+(exit code 0)

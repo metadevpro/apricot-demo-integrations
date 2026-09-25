@@ -1,0 +1,382 @@
+@startuml
+hide empty members
+package "Drone" as n1 {
+  class "SafetyCritical" as n2 <<metadata def>>
+  class "Component" as n3 <<part def>> {
+    mass : Real
+    power : Real
+    cost : Real
+  }
+  class "PowerPort" as n4 <<port def>>
+  class "~PowerPort" as n5 <<conjugated port def>>
+  class "DataPort" as n6 <<port def>>
+  class "~DataPort" as n7 <<conjugated port def>>
+  class "ControlPort" as n8 <<port def>>
+  class "~ControlPort" as n9 <<conjugated port def>>
+  class "Frame" as n10 <<part def>>
+  class "Battery" as n11 <<part def>> {
+    capacity : Real
+  }
+  class "supply : PowerPort" as n12 <<port>>
+  class "Motor" as n13 <<part def>>
+  class "powerIn : PowerPort" as n14 <<port>>
+  class "command : ControlPort" as n15 <<port>>
+  class "FlightController" as n16 <<part def>>
+  class "powerIn : PowerPort" as n17 <<port>>
+  class "motorBus : ControlPort" as n18 <<port>>
+  class "telemetry : DataPort" as n19 <<port>>
+  class "GpsReceiver" as n20 <<part def>>
+  class "nav : DataPort" as n21 <<port>>
+  class "Camera" as n22 <<part def>>
+  class "video : DataPort" as n23 <<port>>
+  class "Gripper" as n24 <<part def>>
+  class "command : ControlPort" as n25 <<port>>
+  class "Quadcopter" as n26 <<part def>> {
+    payload : Real
+    hoverSpecificPower : Real = 100
+    usableFraction : Real = 0.8
+    motorMass : Real
+    emptyMass : Real
+    takeoffMass : Real
+    avionicsPower : Real
+    hoverPower : Real
+    endurance : Real
+  }
+  class "airframe : Frame" as n27 <<part>>
+  class "battery : Battery" as n28 <<part>>
+  class "motors : Motor [4]" as n29 <<part>>
+  class "controller : FlightController" as n30 <<part>>
+  class "gps : GpsReceiver" as n31 <<part>>
+  class "camera : Camera" as n32 <<part>>
+  class "gripper : Gripper" as n33 <<part>>
+  class "(connection)" as n34 <<connection>>
+  class "(connection)" as n35 <<connection>>
+  class "(connection)" as n36 <<connection>>
+  class "(connection)" as n37 <<connection>>
+  class "(connection)" as n38 <<connection>>
+  class "(connection)" as n39 <<connection>>
+  class "drone : Quadcopter" as n40 <<part>> {
+    payload : Real = 5
+  }
+  class "airframe : Frame" as n41 <<part>> {
+    mass : Real = 3.2
+    power : Real = 0
+    cost : Real = 450
+  }
+  class "battery : Battery" as n42 <<part>> <<SafetyCritical>> {
+    mass : Real = 4.4
+    power : Real = 0
+    cost : Real = 900
+    capacity : Real = 1100
+  }
+  class "motors : Motor" as n43 <<part>> <<SafetyCritical>> {
+    mass : Real = 0.55
+    power : Real = 0
+    cost : Real = 160
+  }
+  class "controller : FlightController" as n44 <<part>> <<SafetyCritical>> {
+    mass : Real = 0.25
+    power : Real = 12
+    cost : Real = 380
+  }
+  class "gps : GpsReceiver" as n45 <<part>> {
+    mass : Real = 0.1
+    power : Real = 2
+    cost : Real = 120
+  }
+  class "camera : Camera" as n46 <<part>> {
+    mass : Real = 0.6
+    power : Real = 15
+    cost : Real = 700
+  }
+  class "gripper : Gripper" as n47 <<part>> {
+    mass : Real = 0.4
+    power : Real = 5
+    cost : Real = 150
+  }
+  class "(satisfy requirement)" as n48 <<satisfy requirement>>
+  class "(satisfy requirement)" as n49 <<satisfy requirement>>
+  class "(satisfy requirement)" as n50 <<satisfy requirement>>
+  class "FlightSoftware" as n51 <<part def>>
+  class "autopilot : FlightSoftware" as n52 <<part>>
+  class "autopilotOnController" as n53 <<allocation>>
+  class "MaxTakeoffMass" as n54 <<requirement def>> {
+    vehicle : Quadcopter
+    limit : Real = 25
+  }
+  class "massOk" as n55 <<constraint>>
+  class "MinFlightTime" as n56 <<requirement def>> {
+    vehicle : Quadcopter
+    minMinutes : Real = 30
+  }
+  class "longEnough" as n57 <<constraint>>
+  class "MinPayload" as n58 <<requirement def>> {
+    vehicle : Quadcopter
+    minKg : Real = 5
+  }
+  class "carriesParcel" as n59 <<constraint>>
+  class "mtow : MaxTakeoffMass" as n60 <<requirement>> {
+    vehicle
+  }
+  class "flightTime : MinFlightTime" as n61 <<requirement>>
+  class "deliveryLoad : MinPayload" as n62 <<requirement>>
+  class "powerBudget" as n63 <<assert constraint>>
+  class "flightTimeCheck" as n64 <<assert constraint>>
+  class "Weighing" as n65 <<verification case def>> {
+    vehicle : Quadcopter
+  }
+  class "weighDrone : Weighing" as n66 <<verification case>> {
+    vehicle
+  }
+  class "(requirement)" as n67 <<requirement>>
+  class "(requirement)" as n68 <<requirement>>
+  package "Sizing" as n69 {
+    class "capacity : Integer" as n70 <<attribute>>
+    class "payload : Integer" as n71 <<attribute>>
+    class "heavyLift" as n72 <<constraint>>
+    class "packWh : Integer" as n73 <<attribute>>
+    class "packCatalogue" as n74 <<assert constraint>>
+    class "packUnder25" as n75 <<assert constraint>>
+    class "packFlies30" as n76 <<assert constraint>>
+    class "bayPackWh : Integer" as n77 <<attribute>>
+    class "bayFits" as n78 <<assert constraint>>
+    class "bayFlies30" as n79 <<assert constraint>>
+    class "AmbitiousSpec" as n80 <<requirement def>>
+    class "featherweight" as n81 <<constraint>>
+    class "longHaul" as n82 <<constraint>>
+    class "parcel" as n83 <<constraint>>
+    class "affordablePack" as n84 <<constraint>>
+    class "ambitious : AmbitiousSpec" as n85 <<requirement>>
+    class "takeoffMass : Integer" as n86 <<attribute>>
+    class "bigBattery" as n87 <<constraint>>
+    class "propInches : Integer" as n88 <<attribute>>
+    class "krpm : Integer" as n89 <<attribute>>
+    class "rotorFits" as n90 <<constraint>>
+    class "rotorCompact" as n91 <<constraint>>
+    class "panelSide : Real" as n92 <<attribute>>
+    class "squarePanel" as n93 <<constraint>>
+    class "SmallestProp" as n94 <<analysis case def>> {
+      inches : Integer
+      rpmK : Integer
+    }
+    class "smallest : MinimizeObjective" as n95 <<requirement>> {
+      selectedAlternative : Anything
+    }
+    class "eval : EvaluationFunction" as n96 <<calculation>>
+    class "lifts" as n97 <<constraint>>
+    class "tipSpeed" as n98 <<constraint>>
+    class "MaxPayload" as n99 <<analysis case def>> {
+      cap : Integer
+      load : Integer
+    }
+    class "heaviest : MaximizeObjective" as n100 <<requirement>> {
+      selectedAlternative : Anything
+    }
+    class "eval : EvaluationFunction" as n101 <<calculation>>
+    class "flies30" as n102 <<constraint>>
+    class "under25" as n103 <<constraint>>
+    class "nonNegative" as n104 <<constraint>>
+  }
+  class "ExtraLoad" as n105 <<analysis case def>> {
+    vehicle : Quadcopter
+    extraKg : Real = 0
+    minutes : Real
+  }
+  class "stillFlies" as n106 <<requirement>>
+  class "(constraint)" as n107 <<constraint>>
+  class "droneExtraLoad : ExtraLoad" as n108 <<analysis case>> {
+    vehicle
+  }
+  class "Launch" as n109 <<attribute def>>
+  class "ParcelDropped" as n110 <<attribute def>>
+  class "LowBattery" as n111 <<attribute def>>
+  class "FlightModes" as n112 <<state def>>
+  class "(action)" as n113 <<action>>
+  class "(succession as)" as n114 <<succession as>>
+  class "idle" as n115 <<state>>
+  class "cruising" as n116 <<state>>
+  class "delivering" as n117 <<state>>
+  class "returning" as n118 <<state>>
+  class "launch" as n119 <<transition>>
+  class "(accept action)" as n120 <<accept action>> {
+    : Launch
+  }
+  class "(succession as)" as n121 <<succession as>>
+  class "arrive" as n122 <<transition>>
+  class "(succession as)" as n123 <<succession as>>
+  class "dropped" as n124 <<transition>>
+  class "(accept action)" as n125 <<accept action>> {
+    : ParcelDropped
+  }
+  class "(succession as)" as n126 <<succession as>>
+  class "abort" as n127 <<transition>>
+  class "(accept action)" as n128 <<accept action>> {
+    : LowBattery
+  }
+  class "(succession as)" as n129 <<succession as>>
+  class "landed" as n130 <<transition>>
+  class "(succession as)" as n131 <<succession as>>
+  class "DeliveryMission" as n132 <<action def>> {
+    charge : Real = 100
+    cruiseCost : Real
+  }
+  class "reserve" as n133 <<assert constraint>>
+  class "(succession as)" as n134 <<succession as>>
+  class "takeOff" as n135 <<action>>
+  class "(assignment action)" as n136 <<assignment action>>
+  class "(succession as)" as n137 <<succession as>>
+  class "cruiseOut" as n138 <<action>>
+  class "(assignment action)" as n139 <<assignment action>>
+  class "(succession as)" as n140 <<succession as>>
+  class "release" as n141 <<action>>
+  class "(assignment action)" as n142 <<assignment action>>
+  class "(succession as)" as n143 <<succession as>>
+  class "cruiseBack" as n144 <<action>>
+  class "(assignment action)" as n145 <<assignment action>>
+  class "(succession as)" as n146 <<succession as>>
+  class "land" as n147 <<action>>
+  class "(assignment action)" as n148 <<assignment action>>
+  class "(succession as)" as n149 <<succession as>>
+}
+n4 +-- n5
+n6 +-- n7
+n8 +-- n9
+n11 o-- n12
+n13 o-- n14
+n13 o-- n15
+n16 o-- n17
+n16 o-- n18
+n16 o-- n19
+n20 o-- n21
+n22 o-- n23
+n24 o-- n25
+n26 *-- n27
+n26 *-- n28
+n26 *-- n29
+n26 *-- n30
+n26 *-- n31
+n26 *-- n32
+n26 *-- n33
+n26 *-- n34
+n26 *-- n35
+n26 *-- n36
+n26 *-- n37
+n26 *-- n38
+n26 *-- n39
+n40 *-- n41
+n40 *-- n42
+n40 *-- n43
+n40 *-- n44
+n40 *-- n45
+n40 *-- n46
+n40 *-- n47
+n40 *-- n48
+n40 *-- n49
+n40 *-- n50
+n54 *-- n55
+n56 *-- n57
+n58 *-- n59
+n67 *-- n68
+n66 *-- n67
+n80 *-- n81
+n80 *-- n82
+n80 *-- n83
+n80 *-- n84
+n95 o-- n96
+n95 *-- n97
+n95 *-- n98
+n94 *-- n95
+n100 o-- n101
+n100 *-- n102
+n100 *-- n103
+n100 *-- n104
+n99 *-- n100
+n106 *-- n107
+n105 *-- n106
+n112 *-- n113
+n112 o-- n114
+n112 *-- n115
+n112 *-- n116
+n112 *-- n117
+n112 *-- n118
+n119 *-- n120
+n119 o-- n121
+n112 *-- n119
+n122 o-- n123
+n112 *-- n122
+n124 *-- n125
+n124 o-- n126
+n112 *-- n124
+n127 *-- n128
+n127 o-- n129
+n112 *-- n127
+n130 o-- n131
+n112 *-- n130
+n132 *-- n133
+n132 o-- n134
+n135 *-- n136
+n132 *-- n135
+n132 o-- n137
+n138 *-- n139
+n132 *-- n138
+n132 o-- n140
+n141 *-- n142
+n132 *-- n141
+n132 o-- n143
+n144 *-- n145
+n132 *-- n144
+n132 o-- n146
+n147 *-- n148
+n132 *-- n147
+n132 o-- n149
+n10 --|> n3
+n11 --|> n3
+n12 ..> n4
+n13 --|> n3
+n14 ..> n4
+n15 ..> n8
+n16 --|> n3
+n17 ..> n4
+n18 ..> n8
+n19 ..> n6
+n20 --|> n3
+n21 ..> n6
+n22 --|> n3
+n23 ..> n6
+n24 --|> n3
+n25 ..> n8
+n27 ..> n10
+n28 ..> n11
+n29 ..> n13
+n30 ..> n16
+n31 ..> n20
+n32 ..> n22
+n33 ..> n24
+n40 ..> n26
+n41 --|> n27
+n42 --|> n28
+n43 --|> n29
+n44 --|> n30
+n45 --|> n31
+n46 --|> n32
+n47 --|> n33
+n52 ..> n51
+n60 ..> n54
+n61 ..> n56
+n62 ..> n58
+n66 ..> n65
+n85 ..> n80
+n108 ..> n105
+note as c1
+The take-off mass stays within the 25 kg class limit. 
+end note
+c1 .. n54
+note as c2
+One charge covers a 30 minute delivery round trip. 
+end note
+c2 .. n56
+note as c3
+The drone carries a standard 5 kg parcel. 
+end note
+c3 .. n58
+@enduml

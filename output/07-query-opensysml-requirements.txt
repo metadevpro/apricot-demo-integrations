@@ -1,0 +1,7 @@
+$ sysml -query oslc.where=rdf:type="RequirementUsage"&oslc.select=sysml:shortName,sysml:type drone.sysml
+✓ package Drone
+Drone::mtow  RequirementUsage  sysml:shortName=R-01  sysml:type=Drone::MaxTakeoffMass
+Drone::flightTime  RequirementUsage  sysml:shortName=R-02  sysml:type=Drone::MinFlightTime
+Drone::deliveryLoad  RequirementUsage  sysml:shortName=R-03  sysml:type=Drone::MinPayload
+Drone::Sizing::ambitious  RequirementUsage  sysml:type=Drone::Sizing::AmbitiousSpec
+(exit code 0)

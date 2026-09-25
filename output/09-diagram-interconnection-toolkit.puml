@@ -1,0 +1,32 @@
+@startuml
+rectangle "Quadcopter" as n1 <<part def>> {
+  rectangle "airframe : Frame" as n2 <<part>>
+  rectangle "battery : Battery" as n3 <<part>> {
+    port "supply : PowerPort" as n4
+  }
+  rectangle "motors : Motor [4]" as n5 <<part>> {
+    port "powerIn : PowerPort" as n6
+    port "command : ControlPort" as n7
+  }
+  rectangle "controller : FlightController" as n8 <<part>> {
+    port "powerIn : PowerPort" as n9
+    port "motorBus : ControlPort" as n10
+    port "telemetry : DataPort" as n11
+  }
+  rectangle "gps : GpsReceiver" as n12 <<part>> {
+    port "nav : DataPort" as n13
+  }
+  rectangle "camera : Camera" as n14 <<part>> {
+    port "video : DataPort" as n15
+  }
+  rectangle "gripper : Gripper" as n16 <<part>> {
+    port "command : ControlPort" as n17
+  }
+}
+n4 -- n9
+n4 -- n6
+n10 -- n7
+n10 -- n17
+n13 -- n11
+n15 -- n11
+@enduml

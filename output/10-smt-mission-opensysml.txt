@@ -1,0 +1,7 @@
+$ sysml -engine smt -action Drone::DeliveryMission -check-property Drone::DeliveryMission::reserve drone.sysml
+✓ package Drone
+✗ Action Drone::DeliveryMission: at step 6: constraint reserve: assertion evaluated to false: charge >= 20.0
+  inputs: charge = 100.0, cruiseCost = 32.75
+  witness: no choices
+  standing: violated (witnessed: witness of 1 input replayed, inputs chosen from their domains: cruiseCost = 32.75)
+(exit code 1)

@@ -1,0 +1,9 @@
+$ sysml drone.sysml   # REPL, then: %optimize Drone::Sizing::MaxPayload
+✓ package Drone
+SysML v2 REPL — %help for commands, Ctrl-D to exit
+✓ Analysis MaxPayload is optimized (z3, 35ms)
+  maximize heaviest = `load`: 11914
+  Drone::Sizing::MaxPayload::cap = 1584
+  Drone::Sizing::MaxPayload::load = 11914
+  standing: satisfiable (witnessed: 1 query by solve)
+(exit code 0)

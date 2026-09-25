@@ -1,0 +1,533 @@
+$ sysmlv2 check drone.sysml drone-report.sysml
+warning: unresolved reference `DocumentQueries`
+  --> drone-report.sysml:7:20
+   |
+   |     private import DocumentQueries::*;
+
+warning: unresolved reference `Query`
+  --> drone-report.sysml:14:28
+   |
+   |     calc def Components :> Query {
+
+warning: unresolved reference `WhereType`
+  --> drone-report.sysml:16:9
+   |
+   |         WhereType(source = OwnedElements(source = root), type = "PartUsage")
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:16:19
+   |
+   |         WhereType(source = OwnedElements(source = root), type = "PartUsage")
+
+warning: unresolved reference `OwnedElements`
+  --> drone-report.sysml:16:28
+   |
+   |         WhereType(source = OwnedElements(source = root), type = "PartUsage")
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:16:42
+   |
+   |         WhereType(source = OwnedElements(source = root), type = "PartUsage")
+
+warning: unresolved reference `type`
+  --> drone-report.sysml:16:58
+   |
+   |         WhereType(source = OwnedElements(source = root), type = "PartUsage")
+
+warning: unresolved reference `Query`
+  --> drone-report.sysml:23:33
+   |
+   |     calc def HeavyComponents :> Query {
+
+warning: unresolved reference `WhereFeature`
+  --> drone-report.sysml:26:9
+   |
+   |         WhereFeature(source = Components(root = root), 'feature' = "mass", operator = ">=", value = threshold)
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:26:22
+   |
+   |         WhereFeature(source = Components(root = root), 'feature' = "mass", operator = ">=", value = threshold)
+
+warning: unresolved reference `feature`
+  --> drone-report.sysml:26:56
+   |
+   |         WhereFeature(source = Components(root = root), 'feature' = "mass", operator = ">=", value = threshold)
+
+warning: unresolved reference `operator`
+  --> drone-report.sysml:26:76
+   |
+   |         WhereFeature(source = Components(root = root), 'feature' = "mass", operator = ">=", value = threshold)
+
+warning: unresolved reference `value`
+  --> drone-report.sysml:26:93
+   |
+   |         WhereFeature(source = Components(root = root), 'feature' = "mass", operator = ">=", value = threshold)
+
+warning: unresolved reference `Query`
+  --> drone-report.sysml:30:33
+   |
+   |     calc def BillOfMaterials :> Query {
+
+warning: unresolved reference `Project`
+  --> drone-report.sysml:32:9
+   |
+   |         Project(
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:33:13
+   |
+   |             source = OrderBy(source = Components(root = root), property = "mass",
+
+warning: unresolved reference `OrderBy`
+  --> drone-report.sysml:33:22
+   |
+   |             source = OrderBy(source = Components(root = root), property = "mass",
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:33:30
+   |
+   |             source = OrderBy(source = Components(root = root), property = "mass",
+
+warning: unresolved reference `property`
+  --> drone-report.sysml:33:64
+   |
+   |             source = OrderBy(source = Components(root = root), property = "mass",
+
+warning: unresolved reference `direction`
+  --> drone-report.sysml:34:30
+   |
+   |                              direction = "descending", missing = "last", multiple = "error"),
+
+warning: unresolved reference `missing`
+  --> drone-report.sysml:34:56
+   |
+   |                              direction = "descending", missing = "last", multiple = "error"),
+
+warning: unresolved reference `multiple`
+  --> drone-report.sysml:34:74
+   |
+   |                              direction = "descending", missing = "last", multiple = "error"),
+
+warning: unresolved reference `properties`
+  --> drone-report.sysml:35:13
+   |
+   |             properties = ("name", "mass", "power", "cost"),
+
+warning: unresolved reference `columns`
+  --> drone-report.sysml:36:13
+   |
+   |             columns = (
+
+warning: unresolved reference `Column`
+  --> drone-report.sysml:37:17
+   |
+   |                 Column(name = "costPerKg", expression = Component::cost / Component::mass),
+
+warning: unresolved reference `name`
+  --> drone-report.sysml:37:24
+   |
+   |                 Column(name = "costPerKg", expression = Component::cost / Component::mass),
+
+warning: unresolved reference `expression`
+  --> drone-report.sysml:37:44
+   |
+   |                 Column(name = "costPerKg", expression = Component::cost / Component::mass),
+
+warning: unresolved reference `Column`
+  --> drone-report.sysml:38:17
+   |
+   |                 Column(name = "label", expression = "part: " + Element::name)
+
+warning: unresolved reference `name`
+  --> drone-report.sysml:38:24
+   |
+   |                 Column(name = "label", expression = "part: " + Element::name)
+
+warning: unresolved reference `expression`
+  --> drone-report.sysml:38:40
+   |
+   |                 Column(name = "label", expression = "part: " + Element::name)
+
+warning: unresolved reference `Query`
+  --> drone-report.sysml:44:36
+   |
+   |     calc def CriticalComponents :> Query {
+
+warning: unresolved reference `Project`
+  --> drone-report.sysml:46:9
+   |
+   |         Project(
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:47:13
+   |
+   |             source = WhereMetadata(source = Components(root = root), 'metadata' = "Drone::SafetyCritical"),
+
+warning: unresolved reference `WhereMetadata`
+  --> drone-report.sysml:47:22
+   |
+   |             source = WhereMetadata(source = Components(root = root), 'metadata' = "Drone::SafetyCritical"),
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:47:36
+   |
+   |             source = WhereMetadata(source = Components(root = root), 'metadata' = "Drone::SafetyCritical"),
+
+warning: unresolved reference `metadata`
+  --> drone-report.sysml:47:70
+   |
+   |             source = WhereMetadata(source = Components(root = root), 'metadata' = "Drone::SafetyCritical"),
+
+warning: unresolved reference `properties`
+  --> drone-report.sysml:48:13
+   |
+   |             properties = ("name", "qualifiedName")
+
+warning: unresolved reference `Query`
+  --> drone-report.sysml:54:30
+   |
+   |     calc def Requirements :> Query {
+
+warning: unresolved reference `Project`
+  --> drone-report.sysml:55:9
+   |
+   |         Project(
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:56:13
+   |
+   |             source = OrderBy(source = WhereType(source = OwnedElements(source = Drone), type = "RequirementUsage"),
+
+warning: unresolved reference `OrderBy`
+  --> drone-report.sysml:56:22
+   |
+   |             source = OrderBy(source = WhereType(source = OwnedElements(source = Drone), type = "RequirementUsage"),
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:56:30
+   |
+   |             source = OrderBy(source = WhereType(source = OwnedElements(source = Drone), type = "RequirementUsage"),
+
+warning: unresolved reference `WhereType`
+  --> drone-report.sysml:56:39
+   |
+   |             source = OrderBy(source = WhereType(source = OwnedElements(source = Drone), type = "RequirementUsage"),
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:56:49
+   |
+   |             source = OrderBy(source = WhereType(source = OwnedElements(source = Drone), type = "RequirementUsage"),
+
+warning: unresolved reference `OwnedElements`
+  --> drone-report.sysml:56:58
+   |
+   |             source = OrderBy(source = WhereType(source = OwnedElements(source = Drone), type = "RequirementUsage"),
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:56:72
+   |
+   |             source = OrderBy(source = WhereType(source = OwnedElements(source = Drone), type = "RequirementUsage"),
+
+warning: unresolved reference `type`
+  --> drone-report.sysml:56:89
+   |
+   |             source = OrderBy(source = WhereType(source = OwnedElements(source = Drone), type = "RequirementUsage"),
+
+warning: unresolved reference `property`
+  --> drone-report.sysml:57:30
+   |
+   |                              property = "shortName", direction = "ascending", missing = "last", multiple = "error"),
+
+warning: unresolved reference `direction`
+  --> drone-report.sysml:57:54
+   |
+   |                              property = "shortName", direction = "ascending", missing = "last", multiple = "error"),
+
+warning: unresolved reference `missing`
+  --> drone-report.sysml:57:79
+   |
+   |                              property = "shortName", direction = "ascending", missing = "last", multiple = "error"),
+
+warning: unresolved reference `multiple`
+  --> drone-report.sysml:57:97
+   |
+   |                              property = "shortName", direction = "ascending", missing = "last", multiple = "error"),
+
+warning: unresolved reference `properties`
+  --> drone-report.sysml:58:13
+   |
+   |             properties = ("shortName", "name", "type")
+
+warning: unresolved reference `Query`
+  --> drone-report.sysml:63:29
+   |
+   |     calc def SatisfiedBy :> Query {
+
+warning: unresolved reference `Project`
+  --> drone-report.sysml:65:9
+   |
+   |         Project(
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:66:13
+   |
+   |             source = RelatedElements(source = req, relationshipKind = "satisfaction", direction = "incoming", maxDepth = 1),
+
+warning: unresolved reference `RelatedElements`
+  --> drone-report.sysml:66:22
+   |
+   |             source = RelatedElements(source = req, relationshipKind = "satisfaction", direction = "incoming", maxDepth = 1),
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:66:38
+   |
+   |             source = RelatedElements(source = req, relationshipKind = "satisfaction", direction = "incoming", maxDepth = 1),
+
+warning: unresolved reference `relationshipKind`
+  --> drone-report.sysml:66:52
+   |
+   |             source = RelatedElements(source = req, relationshipKind = "satisfaction", direction = "incoming", maxDepth = 1),
+
+warning: unresolved reference `direction`
+  --> drone-report.sysml:66:87
+   |
+   |             source = RelatedElements(source = req, relationshipKind = "satisfaction", direction = "incoming", maxDepth = 1),
+
+warning: unresolved reference `maxDepth`
+  --> drone-report.sysml:66:111
+   |
+   |             source = RelatedElements(source = req, relationshipKind = "satisfaction", direction = "incoming", maxDepth = 1),
+
+warning: unresolved reference `properties`
+  --> drone-report.sysml:67:13
+   |
+   |             properties = ("name", "qualifiedName")
+
+warning: unresolved reference `Query`
+  --> drone-report.sysml:72:28
+   |
+   |     calc def VerifiedBy :> Query {
+
+warning: unresolved reference `RelatedElements`
+  --> drone-report.sysml:74:9
+   |
+   |         RelatedElements(source = req, relationshipKind = "verification", direction = "incoming", maxDepth = 1)
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:74:25
+   |
+   |         RelatedElements(source = req, relationshipKind = "verification", direction = "incoming", maxDepth = 1)
+
+warning: unresolved reference `relationshipKind`
+  --> drone-report.sysml:74:39
+   |
+   |         RelatedElements(source = req, relationshipKind = "verification", direction = "incoming", maxDepth = 1)
+
+warning: unresolved reference `direction`
+  --> drone-report.sysml:74:74
+   |
+   |         RelatedElements(source = req, relationshipKind = "verification", direction = "incoming", maxDepth = 1)
+
+warning: unresolved reference `maxDepth`
+  --> drone-report.sysml:74:98
+   |
+   |         RelatedElements(source = req, relationshipKind = "verification", direction = "incoming", maxDepth = 1)
+
+warning: unresolved reference `Query`
+  --> drone-report.sysml:78:29
+   |
+   |     calc def AllocatedTo :> Query {
+
+warning: unresolved reference `RelatedElements`
+  --> drone-report.sysml:80:9
+   |
+   |         RelatedElements(source = origin, relationshipKind = "allocation", direction = "outgoing", maxDepth = 1)
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:80:25
+   |
+   |         RelatedElements(source = origin, relationshipKind = "allocation", direction = "outgoing", maxDepth = 1)
+
+warning: unresolved reference `relationshipKind`
+  --> drone-report.sysml:80:42
+   |
+   |         RelatedElements(source = origin, relationshipKind = "allocation", direction = "outgoing", maxDepth = 1)
+
+warning: unresolved reference `direction`
+  --> drone-report.sysml:80:75
+   |
+   |         RelatedElements(source = origin, relationshipKind = "allocation", direction = "outgoing", maxDepth = 1)
+
+warning: unresolved reference `maxDepth`
+  --> drone-report.sysml:80:99
+   |
+   |         RelatedElements(source = origin, relationshipKind = "allocation", direction = "outgoing", maxDepth = 1)
+
+warning: unresolved reference `Query`
+  --> drone-report.sysml:84:27
+   |
+   |     calc def PoweredBy :> Query {
+
+warning: unresolved reference `RelatedElements`
+  --> drone-report.sysml:86:9
+   |
+   |         RelatedElements(source = origin, relationshipKind = "connection", direction = "outgoing", maxDepth = 1)
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:86:25
+   |
+   |         RelatedElements(source = origin, relationshipKind = "connection", direction = "outgoing", maxDepth = 1)
+
+warning: unresolved reference `relationshipKind`
+  --> drone-report.sysml:86:42
+   |
+   |         RelatedElements(source = origin, relationshipKind = "connection", direction = "outgoing", maxDepth = 1)
+
+warning: unresolved reference `direction`
+  --> drone-report.sysml:86:75
+   |
+   |         RelatedElements(source = origin, relationshipKind = "connection", direction = "outgoing", maxDepth = 1)
+
+warning: unresolved reference `maxDepth`
+  --> drone-report.sysml:86:99
+   |
+   |         RelatedElements(source = origin, relationshipKind = "connection", direction = "outgoing", maxDepth = 1)
+
+warning: unresolved reference `Query`
+  --> drone-report.sysml:90:32
+   |
+   |     calc def ComponentKinds :> Query {
+
+warning: unresolved reference `RelatedElements`
+  --> drone-report.sysml:92:9
+   |
+   |         RelatedElements(source = general, relationshipKind = "specialization", direction = "incoming", maxDepth = 1)
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:92:25
+   |
+   |         RelatedElements(source = general, relationshipKind = "specialization", direction = "incoming", maxDepth = 1)
+
+warning: unresolved reference `relationshipKind`
+  --> drone-report.sysml:92:43
+   |
+   |         RelatedElements(source = general, relationshipKind = "specialization", direction = "incoming", maxDepth = 1)
+
+warning: unresolved reference `direction`
+  --> drone-report.sysml:92:80
+   |
+   |         RelatedElements(source = general, relationshipKind = "specialization", direction = "incoming", maxDepth = 1)
+
+warning: unresolved reference `maxDepth`
+  --> drone-report.sysml:92:104
+   |
+   |         RelatedElements(source = general, relationshipKind = "specialization", direction = "incoming", maxDepth = 1)
+
+warning: unresolved reference `Document`
+  --> drone-report.sysml:97:30
+   |
+   |     part def DesignReport :> Document {
+
+warning: unresolved reference `title`
+  --> drone-report.sysml:98:29
+   |
+   |         attribute redefines title = "Delivery Drone Design Report";
+
+warning: unresolved reference `Paragraph`
+  --> drone-report.sysml:100:22
+   |
+   |         part intro : Paragraph {
+
+warning: unresolved reference `text`
+  --> drone-report.sysml:101:33
+   |
+   |             attribute redefines text = "Components, requirements and traceability of the delivery drone, generated from the model by OpenSysML.";
+
+warning: unresolved reference `Section`
+  --> drone-report.sysml:104:20
+   |
+   |         part bom : Section {
+
+warning: unresolved reference `Table`
+  --> drone-report.sysml:106:26
+   |
+   |             part table : Table {
+
+warning: unresolved reference `caption`
+  --> drone-report.sysml:107:37
+   |
+   |                 attribute redefines caption = "Components, heaviest first";
+
+warning: unresolved reference `Section`
+  --> drone-report.sysml:112:23
+   |
+   |         part safety : Section {
+
+warning: unresolved reference `Table`
+  --> drone-report.sysml:114:26
+   |
+   |             part table : Table {
+
+warning: unresolved reference `caption`
+  --> drone-report.sysml:115:37
+   |
+   |                 attribute redefines caption = "Components marked @SafetyCritical";
+
+warning: unresolved reference `Section`
+  --> drone-report.sysml:120:22
+   |
+   |         part trace : Section {
+
+warning: unresolved reference `Table`
+  --> drone-report.sysml:122:25
+   |
+   |             part reqs : Table {
+
+warning: unresolved reference `caption`
+  --> drone-report.sysml:123:37
+   |
+   |                 attribute redefines caption = "Requirements by identifier";
+
+warning: unresolved reference `Table`
+  --> drone-report.sysml:126:31
+   |
+   |             part satisfiers : Table {
+
+warning: unresolved reference `caption`
+  --> drone-report.sysml:127:37
+   |
+   |                 attribute redefines caption = "Parts satisfying R-01";
+
+warning: unresolved reference `Section`
+  --> drone-report.sysml:132:26
+   |
+   |         part structure : Section {
+
+warning: unresolved reference `Diagram`
+  --> drone-report.sysml:134:25
+   |
+   |             part tree : Diagram {
+
+warning: unresolved reference `caption`
+  --> drone-report.sysml:135:37
+   |
+   |                 attribute redefines caption = "Drone part tree";
+
+warning: unresolved reference `kind`
+  --> drone-report.sysml:136:37
+   |
+   |                 attribute redefines kind = "tree";
+
+warning: unresolved reference `direction`
+  --> drone-report.sysml:137:37
+   |
+   |                 attribute redefines direction = "LR";
+
+warning: unresolved reference `source`
+  --> drone-report.sysml:138:31
+   |
+   |                 ref redefines source = drone;
+
+106 warning(s)
+(exit code 0)

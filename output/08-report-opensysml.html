@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delivery Drone Design Report</title>
+<style>
+/* The default OpenSysML document stylesheet. Every value comes from a
+   --sysml-* token on .sysml-document, and the whole sheet is in the
+   opensysml cascade layer, so unlayered reader CSS overrides it without
+   specificity fights or !important. */
+@layer opensysml;
+
+@layer opensysml {
+  .sysml-document {
+    --sysml-font-body: system-ui, sans-serif;
+    --sysml-font-mono: ui-monospace, monospace;
+    --sysml-font-size: 1rem;
+    --sysml-line-height: 1.55;
+    --sysml-measure: 42rem;
+    --sysml-space: 1rem;
+    --sysml-space-tight: 0.35rem;
+    --sysml-text: #16191d;
+    --sysml-muted: #5a6472;
+    --sysml-accent: #1f4e79;
+    --sysml-rule: #cfd6de;
+    --sysml-surface: #f4f6f8;
+    --sysml-cell-padding: 0.35rem 0.6rem;
+    --sysml-code-font-size: 0.9em;
+    --sysml-caption-font-size: 0.9em;
+    --sysml-border-width: 1px;
+    --sysml-table-width: 100%;
+    --sysml-title-page-height: 60vh;
+    --sysml-group-heading-weight: 600;
+    --sysml-term-weight: 600;
+
+    box-sizing: border-box;
+    max-width: var(--sysml-measure);
+    margin: var(--sysml-space) auto;
+    padding: 0 var(--sysml-space);
+    font-family: var(--sysml-font-body);
+    font-size: var(--sysml-font-size);
+    line-height: var(--sysml-line-height);
+    color: var(--sysml-text);
+  }
+
+  .sysml-document .sysml-title {
+    color: var(--sysml-accent);
+  }
+
+  .sysml-document .sysml-title-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: var(--sysml-title-page-height);
+    text-align: center;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .sysml-document .sysml-section-number {
+    color: var(--sysml-muted);
+    margin-right: var(--sysml-space-tight);
+  }
+
+  .sysml-document .sysml-toc ol {
+    list-style: none;
+    padding-left: var(--sysml-space);
+  }
+
+  .sysml-document .sysml-toc > ol {
+    padding-left: 0;
+  }
+
+  .sysml-document .sysml-toc a {
+    color: inherit;
+  }
+
+  .sysml-document .sysml-paragraph {
+    margin: var(--sysml-space) 0;
+  }
+
+  .sysml-document .sysml-table {
+    border-collapse: collapse;
+    width: var(--sysml-table-width);
+    margin: var(--sysml-space) 0;
+  }
+
+  .sysml-document .sysml-table th,
+  .sysml-document .sysml-table td {
+    border: var(--sysml-border-width) solid var(--sysml-rule);
+    padding: var(--sysml-cell-padding);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .sysml-document .sysml-table thead th {
+    background: var(--sysml-surface);
+  }
+
+  .sysml-document .sysml-group-heading th {
+    background: var(--sysml-surface);
+    color: var(--sysml-muted);
+    font-weight: var(--sysml-group-heading-weight);
+  }
+
+  .sysml-document .sysml-caption {
+    color: var(--sysml-muted);
+    font-size: var(--sysml-caption-font-size);
+    text-align: left;
+  }
+
+  .sysml-document .sysml-list {
+    margin: var(--sysml-space) 0;
+    padding-left: var(--sysml-space);
+  }
+
+  .sysml-document .sysml-definitions {
+    margin: var(--sysml-space) 0;
+  }
+
+  .sysml-document .sysml-entry {
+    margin: var(--sysml-space-tight) 0;
+  }
+
+  .sysml-document .sysml-term {
+    font-weight: var(--sysml-term-weight);
+  }
+
+  .sysml-document .sysml-description {
+    margin: 0 0 0 var(--sysml-space);
+  }
+
+  .sysml-document .sysml-diagram {
+    margin: var(--sysml-space) 0;
+  }
+
+  .sysml-document .sysml-diagram pre {
+    overflow-x: auto;
+    font-family: var(--sysml-font-mono);
+  }
+
+  .sysml-document code {
+    font-family: var(--sysml-font-mono);
+    font-size: var(--sysml-code-font-size);
+  }
+
+  .sysml-document .sysml-link,
+  .sysml-document .sysml-ref {
+    color: var(--sysml-accent);
+  }
+}
+</style>
+</head>
+<body>
+<article class="sysml-document" data-document="DroneReport::DesignReport">
+<h1 class="sysml-title">Delivery Drone Design Report</h1>
+<nav class="sysml-toc" aria-label="Contents">
+<h2 class="sysml-toc-title">Contents</h2>
+<ol>
+<li><a href="#bom">Bill of materials</a></li>
+<li><a href="#safety">Safety-critical components</a></li>
+<li><a href="#trace">Requirements</a></li>
+<li><a href="#structure">Structure</a></li>
+</ol>
+</nav>
+<p class="sysml-paragraph" data-content="paragraph" data-name="intro">Components, requirements and traceability of the delivery drone, generated from the model by OpenSysML.</p>
+<section class="sysml-section" id="bom" data-content="section" data-name="bom">
+<h2>Bill of materials</h2>
+<table class="sysml-table" data-content="table" data-name="table" data-query="DroneReport::BillOfMaterials">
+<caption class="sysml-caption">Components, heaviest first</caption>
+<thead>
+<tr>
+<th scope="col" data-column="name">name</th>
+<th scope="col" data-column="mass">mass</th>
+<th scope="col" data-column="power">power</th>
+<th scope="col" data-column="cost">cost</th>
+<th scope="col" data-column="costPerKg">costPerKg</th>
+<th scope="col" data-column="label">label</th>
+</tr>
+</thead>
+<tbody>
+<tr class="sysml-row" data-element="Drone::drone::battery" data-element-kind="partUsage">
+<td class="sysml-cell" data-column="name" data-value-kind="string"><span class="sysml-value" data-value-kind="string">battery</span></td>
+<td class="sysml-cell" data-column="mass" data-value-kind="real"><span class="sysml-value" data-value-kind="real">4.4</span></td>
+<td class="sysml-cell" data-column="power" data-value-kind="real"><span class="sysml-value" data-value-kind="real">0</span></td>
+<td class="sysml-cell" data-column="cost" data-value-kind="real"><span class="sysml-value" data-value-kind="real">900</span></td>
+<td class="sysml-cell" data-column="costPerKg" data-value-kind="real"><span class="sysml-value" data-value-kind="real">204.54545454545453</span></td>
+<td class="sysml-cell" data-column="label" data-value-kind="string"><span class="sysml-value" data-value-kind="string">part: battery</span></td>
+</tr>
+<tr class="sysml-row" data-element="Drone::drone::airframe" data-element-kind="partUsage">
+<td class="sysml-cell" data-column="name" data-value-kind="string"><span class="sysml-value" data-value-kind="string">airframe</span></td>
+<td class="sysml-cell" data-column="mass" data-value-kind="real"><span class="sysml-value" data-value-kind="real">3.2</span></td>
+<td class="sysml-cell" data-column="power" data-value-kind="real"><span class="sysml-value" data-value-kind="real">0</span></td>
+<td class="sysml-cell" data-column="cost" data-value-kind="real"><span class="sysml-value" data-value-kind="real">450</span></td>
+<td class="sysml-cell" data-column="costPerKg" data-value-kind="real"><span class="sysml-value" data-value-kind="real">140.625</span></td>
+<td class="sysml-cell" data-column="label" data-value-kind="string"><span class="sysml-value" data-value-kind="string">part: airframe</span></td>
+</tr>
+<tr class="sysml-row" data-element="Drone::drone::camera" data-element-kind="partUsage">
+<td class="sysml-cell" data-column="name" data-value-kind="string"><span class="sysml-value" data-value-kind="string">camera</span></td>
+<td class="sysml-cell" data-column="mass" data-value-kind="real"><span class="sysml-value" data-value-kind="real">0.6</span></td>
+<td class="sysml-cell" data-column="power" data-value-kind="real"><span class="sysml-value" data-value-kind="real">15</span></td>
+<td class="sysml-cell" data-column="cost" data-value-kind="real"><span class="sysml-value" data-value-kind="real">700</span></td>
+<td class="sysml-cell" data-column="costPerKg" data-value-kind="real"><span class="sysml-value" data-value-kind="real">1166.6666666666667</span></td>
+<td class="sysml-cell" data-column="label" data-value-kind="string"><span class="sysml-value" data-value-kind="string">part: camera</span></td>
+</tr>
+<tr class="sysml-row" data-element="Drone::drone::motors" data-element-kind="partUsage">
+<td class="sysml-cell" data-column="name" data-value-kind="string"><span class="sysml-value" data-value-kind="string">motors</span></td>
+<td class="sysml-cell" data-column="mass" data-value-kind="real"><span class="sysml-value" data-value-kind="real">0.55</span></td>
+<td class="sysml-cell" data-column="power" data-value-kind="real"><span class="sysml-value" data-value-kind="real">0</span></td>
+<td class="sysml-cell" data-column="cost" data-value-kind="real"><span class="sysml-value" data-value-kind="real">160</span></td>
+<td class="sysml-cell" data-column="costPerKg" data-value-kind="real"><span class="sysml-value" data-value-kind="real">290.9090909090909</span></td>
+<td class="sysml-cell" data-column="label" data-value-kind="string"><span class="sysml-value" data-value-kind="string">part: motors</span></td>
+</tr>
+<tr class="sysml-row" data-element="Drone::drone::gripper" data-element-kind="partUsage">
+<td class="sysml-cell" data-column="name" data-value-kind="string"><span class="sysml-value" data-value-kind="string">gripper</span></td>
+<td class="sysml-cell" data-column="mass" data-value-kind="real"><span class="sysml-value" data-value-kind="real">0.4</span></td>
+<td class="sysml-cell" data-column="power" data-value-kind="real"><span class="sysml-value" data-value-kind="real">5</span></td>
+<td class="sysml-cell" data-column="cost" data-value-kind="real"><span class="sysml-value" data-value-kind="real">150</span></td>
+<td class="sysml-cell" data-column="costPerKg" data-value-kind="real"><span class="sysml-value" data-value-kind="real">375</span></td>
+<td class="sysml-cell" data-column="label" data-value-kind="string"><span class="sysml-value" data-value-kind="string">part: gripper</span></td>
+</tr>
+<tr class="sysml-row" data-element="Drone::drone::controller" data-element-kind="partUsage">
+<td class="sysml-cell" data-column="name" data-value-kind="string"><span class="sysml-value" data-value-kind="string">controller</span></td>
+<td class="sysml-cell" data-column="mass" data-value-kind="real"><span class="sysml-value" data-value-kind="real">0.25</span></td>
+<td class="sysml-cell" data-column="power" data-value-kind="real"><span class="sysml-value" data-value-kind="real">12</span></td>
+<td class="sysml-cell" data-column="cost" data-value-kind="real"><span class="sysml-value" data-value-kind="real">380</span></td>
+<td class="sysml-cell" data-column="costPerKg" data-value-kind="real"><span class="sysml-value" data-value-kind="real">1520</span></td>
+<td class="sysml-cell" data-column="label" data-value-kind="string"><span class="sysml-value" data-value-kind="string">part: controller</span></td>
+</tr>
+<tr class="sysml-row" data-element="Drone::drone::gps" data-element-kind="partUsage">
+<td class="sysml-cell" data-column="name" data-value-kind="string"><span class="sysml-value" data-value-kind="string">gps</span></td>
+<td class="sysml-cell" data-column="mass" data-value-kind="real"><span class="sysml-value" data-value-kind="real">0.1</span></td>
+<td class="sysml-cell" data-column="power" data-value-kind="real"><span class="sysml-value" data-value-kind="real">2</span></td>
+<td class="sysml-cell" data-column="cost" data-value-kind="real"><span class="sysml-value" data-value-kind="real">120</span></td>
+<td class="sysml-cell" data-column="costPerKg" data-value-kind="real"><span class="sysml-value" data-value-kind="real">1200</span></td>
+<td class="sysml-cell" data-column="label" data-value-kind="string"><span class="sysml-value" data-value-kind="string">part: gps</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="sysml-section" id="safety" data-content="section" data-name="safety">
+<h2>Safety-critical components</h2>
+<table class="sysml-table" data-content="table" data-name="table" data-query="DroneReport::CriticalComponents">
+<caption class="sysml-caption">Components marked @SafetyCritical</caption>
+<thead>
+<tr>
+<th scope="col" data-column="name">name</th>
+<th scope="col" data-column="qualifiedName">qualifiedName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="sysml-row" data-element="Drone::drone::battery" data-element-kind="partUsage">
+<td class="sysml-cell" data-column="name" data-value-kind="string"><span class="sysml-value" data-value-kind="string">battery</span></td>
+<td class="sysml-cell" data-column="qualifiedName" data-value-kind="string"><span class="sysml-value" data-value-kind="string">Drone::drone::battery</span></td>
+</tr>
+<tr class="sysml-row" data-element="Drone::drone::motors" data-element-kind="partUsage">
+<td class="sysml-cell" data-column="name" data-value-kind="string"><span class="sysml-value" data-value-kind="string">motors</span></td>
+<td class="sysml-cell" data-column="qualifiedName" data-value-kind="string"><span class="sysml-value" data-value-kind="string">Drone::drone::motors</span></td>
+</tr>
+<tr class="sysml-row" data-element="Drone::drone::controller" data-element-kind="partUsage">
+<td class="sysml-cell" data-column="name" data-value-kind="string"><span class="sysml-value" data-value-kind="string">controller</span></td>
+<td class="sysml-cell" data-column="qualifiedName" data-value-kind="string"><span class="sysml-value" data-value-kind="string">Drone::drone::controller</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="sysml-section" id="trace" data-content="section" data-name="trace">
+<h2>Requirements</h2>
+<table class="sysml-table" data-content="table" data-name="reqs" data-query="DroneReport::Requirements">
+<caption class="sysml-caption">Requirements by identifier</caption>
+<thead>
+<tr>
+<th scope="col" data-column="shortName">shortName</th>
+<th scope="col" data-column="name">name</th>
+<th scope="col" data-column="type">type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="sysml-row" data-element="Drone::mtow" data-element-kind="requirementUsage">
+<td class="sysml-cell" data-column="shortName" data-value-kind="string"><span class="sysml-value" data-value-kind="string">R-01</span></td>
+<td class="sysml-cell" data-column="name" data-value-kind="string"><span class="sysml-value" data-value-kind="string">mtow</span></td>
+<td class="sysml-cell" data-column="type" data-value-kind="string"><span class="sysml-value" data-value-kind="string">Drone::MaxTakeoffMass</span></td>
+</tr>
+<tr class="sysml-row" data-element="Drone::flightTime" data-element-kind="requirementUsage">
+<td class="sysml-cell" data-column="shortName" data-value-kind="string"><span class="sysml-value" data-value-kind="string">R-02</span></td>
+<td class="sysml-cell" data-column="name" data-value-kind="string"><span class="sysml-value" data-value-kind="string">flightTime</span></td>
+<td class="sysml-cell" data-column="type" data-value-kind="string"><span class="sysml-value" data-value-kind="string">Drone::MinFlightTime</span></td>
+</tr>
+<tr class="sysml-row" data-element="Drone::deliveryLoad" data-element-kind="requirementUsage">
+<td class="sysml-cell" data-column="shortName" data-value-kind="string"><span class="sysml-value" data-value-kind="string">R-03</span></td>
+<td class="sysml-cell" data-column="name" data-value-kind="string"><span class="sysml-value" data-value-kind="string">deliveryLoad</span></td>
+<td class="sysml-cell" data-column="type" data-value-kind="string"><span class="sysml-value" data-value-kind="string">Drone::MinPayload</span></td>
+</tr>
+</tbody>
+</table>
+<table class="sysml-table" data-content="table" data-name="satisfiers" data-query="DroneReport::SatisfiedBy">
+<caption class="sysml-caption">Parts satisfying R-01</caption>
+<thead>
+<tr>
+<th scope="col" data-column="name">name</th>
+<th scope="col" data-column="qualifiedName">qualifiedName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="sysml-row" data-element="Drone::drone" data-element-kind="partUsage">
+<td class="sysml-cell" data-column="name" data-value-kind="string"><span class="sysml-value" data-value-kind="string">drone</span></td>
+<td class="sysml-cell" data-column="qualifiedName" data-value-kind="string"><span class="sysml-value" data-value-kind="string">Drone::drone</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="sysml-section" id="structure" data-content="section" data-name="structure">
+<h2>Structure</h2>
+<figure class="sysml-diagram" data-content="diagram" data-name="tree" data-diagram-kind="tree" data-direction="LR">
+<pre class="mermaid">%% tree rendering (the diagram states kind &#34;tree&#34;)
+flowchart LR
+  n0[&#34;Drone::drone : Quadcopter&lt;br&gt;«part»&#34;]
+  n1[&#34;airframe&lt;br&gt;«part»&#34;]
+  n2[&#34;mass&lt;br&gt;«attribute»&#34;]
+  n1 --- n2
+  n3[&#34;power&lt;br&gt;«attribute»&#34;]
+  n1 --- n3
+  n4[&#34;cost&lt;br&gt;«attribute»&#34;]
+  n1 --- n4
+  n0 --- n1
+  n5[&#34;battery&lt;br&gt;«part»&#34;]
+  n6[&#34;mass&lt;br&gt;«attribute»&#34;]
+  n5 --- n6
+  n7[&#34;power&lt;br&gt;«attribute»&#34;]
+  n5 --- n7
+  n8[&#34;cost&lt;br&gt;«attribute»&#34;]
+  n5 --- n8
+  n9[&#34;capacity&lt;br&gt;«attribute»&#34;]
+  n5 --- n9
+  n0 --- n5
+  n10[&#34;motors&lt;br&gt;«part»&#34;]
+  n11[&#34;mass&lt;br&gt;«attribute»&#34;]
+  n10 --- n11
+  n12[&#34;power&lt;br&gt;«attribute»&#34;]
+  n10 --- n12
+  n13[&#34;cost&lt;br&gt;«attribute»&#34;]
+  n10 --- n13
+  n0 --- n10
+  n14[&#34;controller&lt;br&gt;«part»&#34;]
+  n15[&#34;mass&lt;br&gt;«attribute»&#34;]
+  n14 --- n15
+  n16[&#34;power&lt;br&gt;«attribute»&#34;]
+  n14 --- n16
+  n17[&#34;cost&lt;br&gt;«attribute»&#34;]
+  n14 --- n17
+  n0 --- n14
+  n18[&#34;gps&lt;br&gt;«part»&#34;]
+  n19[&#34;mass&lt;br&gt;«attribute»&#34;]
+  n18 --- n19
+  n20[&#34;power&lt;br&gt;«attribute»&#34;]
+  n18 --- n20
+  n21[&#34;cost&lt;br&gt;«attribute»&#34;]
+  n18 --- n21
+  n0 --- n18
+  n22[&#34;camera&lt;br&gt;«part»&#34;]
+  n23[&#34;mass&lt;br&gt;«attribute»&#34;]
+  n22 --- n23
+  n24[&#34;power&lt;br&gt;«attribute»&#34;]
+  n22 --- n24
+  n25[&#34;cost&lt;br&gt;«attribute»&#34;]
+  n22 --- n25
+  n0 --- n22
+  n26[&#34;gripper&lt;br&gt;«part»&#34;]
+  n27[&#34;mass&lt;br&gt;«attribute»&#34;]
+  n26 --- n27
+  n28[&#34;power&lt;br&gt;«attribute»&#34;]
+  n26 --- n28
+  n29[&#34;cost&lt;br&gt;«attribute»&#34;]
+  n26 --- n29
+  n0 --- n26
+  n30[&#34;payload&lt;br&gt;«attribute»&#34;]
+  n0 --- n30
+  n31[&#34;satisfy&#34;]
+  n0 --- n31
+  n32[&#34;satisfy&#34;]
+  n0 --- n32
+  n33[&#34;satisfy&#34;]
+  n0 --- n33</pre>
+<figcaption class="sysml-caption">Drone part tree</figcaption>
+</figure>
+</section>
+</article>
+</body>
+</html>

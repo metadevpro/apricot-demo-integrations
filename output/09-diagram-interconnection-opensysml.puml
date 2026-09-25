@@ -1,0 +1,67 @@
+@startuml
+' interconnection rendering (no view declared; rendering Drone::Quadcopter directly)
+<style>
+root {
+  BackGroundColor white
+  FontName SansSerif
+  FontSize 14
+  FontColor black
+  LineColor #181818
+  HorizontalAlignment left
+}
+element {
+  BackGroundColor white
+  LineColor #181818
+  LineThickness 0.5
+  RoundCorner 0
+  Shadowing 0.0
+}
+start, end, activityBar {
+  BackGroundColor black
+}
+arrow {
+  LineColor #181818
+  LineThickness 1
+  FontSize 13
+}
+note {
+  BackGroundColor #FEFFDD
+  FontSize 13
+}
+.usage {
+  RoundCorner 20
+}
+.package {
+  LineThickness 1.5
+}
+.region {
+  LineStyle 4
+}
+</style>
+skinparam wrapWidth 300
+hide stereotype
+rectangle "**Drone::Quadcopter**\n<size:10>//«part def»//</size>" as n0 <<part def>> {
+  rectangle "**airframe : Frame**\n<size:10>//«part»//</size>" as n1 <<part>> <<usage>>
+  rectangle "**battery : Battery**\n<size:10>//«part»//</size>" as n2 <<part>> <<usage>>
+  rectangle "**motors : Motor**\n<size:10>//«part»//</size>" as n3 <<part>> <<usage>>
+  rectangle "**controller : FlightController**\n<size:10>//«part»//</size>" as n4 <<part>> <<usage>>
+  rectangle "**gps : GpsReceiver**\n<size:10>//«part»//</size>" as n5 <<part>> <<usage>>
+  rectangle "**camera : Camera**\n<size:10>//«part»//</size>" as n6 <<part>> <<usage>>
+  rectangle "**gripper : Gripper**\n<size:10>//«part»//</size>" as n7 <<part>> <<usage>>
+  rectangle "**payload : Real**\n<size:10>//«attribute»//</size>" as n8 <<attribute>> <<usage>>
+  rectangle "**hoverSpecificPower : Real**\n<size:10>//«attribute»//</size>" as n9 <<attribute>> <<usage>>
+  rectangle "**usableFraction : Real**\n<size:10>//«attribute»//</size>" as n10 <<attribute>> <<usage>>
+  rectangle "**motorMass : Real**\n<size:10>//«attribute»//</size>" as n11 <<attribute>> <<usage>>
+  rectangle "**emptyMass : Real**\n<size:10>//«attribute»//</size>" as n12 <<attribute>> <<usage>>
+  rectangle "**takeoffMass : Real**\n<size:10>//«attribute»//</size>" as n13 <<attribute>> <<usage>>
+  rectangle "**avionicsPower : Real**\n<size:10>//«attribute»//</size>" as n14 <<attribute>> <<usage>>
+  rectangle "**hoverPower : Real**\n<size:10>//«attribute»//</size>" as n15 <<attribute>> <<usage>>
+  rectangle "**endurance : Real**\n<size:10>//«attribute»//</size>" as n16 <<attribute>> <<usage>>
+}
+n2 -[thickness=3]- n4 : connect
+n2 -[thickness=3]- n3 : connect
+n4 -[thickness=3]- n3 : connect
+n4 -[thickness=3]- n7 : connect
+n5 -[thickness=3]- n4 : connect
+n6 -[thickness=3]- n4 : connect
+@enduml

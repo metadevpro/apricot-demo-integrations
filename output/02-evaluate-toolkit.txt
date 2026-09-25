@@ -1,0 +1,6 @@
+$ sysmlv2 eval drone.sysml Drone::drone::motorMass Drone::drone::takeoffMass Drone::drone::hoverPower Drone::drone::endurance
+Drone::drone::motorMass = 0.55
+Drone::drone::takeoffMass = 14.5
+Drone::drone::hoverPower = 1484
+Drone::drone::endurance = 35.57951482479785
+(exit code 0)

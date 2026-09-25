@@ -1,0 +1,32 @@
+$ sysmlv2 verify --solve drone.sysml
+drone.sysml:123:37  massOk (ConstraintUsage): undecided (result is indeterminate over unbound features) — z3: satisfiable, e.g. airframe.mass = 0, battery.mass = 0, motors.mass = 0, controller.mass = 0, gps.mass = 0, camera.mass = 0, gripper.mass = 0, payload = 0
+drone.sysml:130:41  longEnough (ConstraintUsage): undecided (result is indeterminate over unbound features) — z3: satisfiable, e.g. battery.capacity = 1.25, airframe.mass = 0, battery.mass = 0, motors.mass = 0, controller.mass = 0, gps.mass = 0, camera.mass = 0, gripper.mass = 0, payload = 0, controller.power = 0, gps.power = 0, camera.power = 0, gripper.power = 0
+drone.sysml:137:44  carriesParcel (ConstraintUsage): undecided (result is indeterminate over unbound features) — z3: satisfiable, e.g. vehicle.payload = 5
+drone.sysml:148:37  powerBudget (AssertConstraintUsage): satisfied
+drone.sysml:151:41  flightTimeCheck (AssertConstraintUsage): satisfied
+drone.sysml:186:13  heavyLift (ConstraintUsage): undecided (result is indeterminate over unbound features) — z3: satisfiable, e.g. payload = 10000, capacity = 1425
+drone.sysml:199:43  packCatalogue (AssertConstraintUsage): satisfied (propagation: holds for all values in the narrowed ranges)
+drone.sysml:200:41  packUnder25 (AssertConstraintUsage): satisfied (propagation: holds for all values in the narrowed ranges)
+drone.sysml:201:41  packFlies30 (AssertConstraintUsage): satisfied (propagation: holds for all values in the narrowed ranges)
+drone.sysml:206:37  bayFits (AssertConstraintUsage): VIOLATED (propagation: domains contract to empty — unsatisfiable)
+drone.sysml:207:40  bayFlies30 (AssertConstraintUsage): VIOLATED (propagation: domains contract to empty — unsatisfiable)
+drone.sysml:212:48  featherweight (ConstraintUsage): undecided (result is indeterminate over unbound features) — z3: satisfiable, e.g. capacity = 42535295865117336267120723146842308608, payload = (- 170141183460469345068482892587369229182)
+drone.sysml:213:43  longHaul (ConstraintUsage): undecided (result is indeterminate over unbound features) — z3: satisfiable, e.g. capacity = 0, payload = -7090
+drone.sysml:214:41  parcel (ConstraintUsage): undecided (result is indeterminate over unbound features) — z3: satisfiable, e.g. payload = 5000
+drone.sysml:215:49  affordablePack (ConstraintUsage): undecided (result is indeterminate over unbound features) — z3: satisfiable, e.g. capacity = 2500
+drone.sysml:223:33  bigBattery (ConstraintUsage): VIOLATED (z3: unsatisfiable — no assignment can make this hold) (with takeoffMass = <indeterminate>)
+drone.sysml:232:13  rotorFits (ConstraintUsage): undecided (result is indeterminate over unbound features) — z3: satisfiable, e.g. krpm = 3, propInches = 30
+drone.sysml:237:13  rotorCompact (ConstraintUsage): VIOLATED (z3: unsatisfiable — no assignment can make this hold)
+drone.sysml:243:34  squarePanel (ConstraintUsage): undecided (result is indeterminate over unbound features) — z3: satisfiable, e.g. panelSide = (root-obj (+ (^ x 2) (- 2)) 2)
+drone.sysml:252:44  lifts (ConstraintUsage): undecided (result is indeterminate over unbound features; z3: solver timed out)
+drone.sysml:253:47  tipSpeed (ConstraintUsage): undecided (result is indeterminate over unbound features) — z3: satisfiable, e.g. rpmK = 90, inches = 1
+drone.sysml:264:46  flies30 (ConstraintUsage): undecided (result is indeterminate over unbound features) — z3: satisfiable, e.g. cap = 0, load = -7090
+drone.sysml:265:46  under25 (ConstraintUsage): undecided (result is indeterminate over unbound features) — z3: satisfiable, e.g. cap = 42535295865117336267120723146842308608, load = (- 170141183460469345068482892587369216182)
+drone.sysml:266:50  nonNegative (ConstraintUsage): undecided (result is indeterminate over unbound features) — z3: satisfiable, e.g. cap = 0, load = 0
+drone.sysml:279:53  <anonymous> (ConstraintUsage): undecided (result is indeterminate over unbound features) — z3: satisfiable, e.g. vehicle.battery.capacity = 0.020833333333333332, airframe.mass = 0, battery.mass = 0, motors.mass = 0, controller.mass = 0, gps.mass = 0, camera.mass = 0, gripper.mass = 0, payload = 0, controller.power = 0, gps.power = 0, camera.power = 0, gripper.power = 0
+drone.sysml:324:37  reserve (AssertConstraintUsage): satisfied
+drone.sysml:123:37  massOk (ConstraintUsage, satisfies Drone::mtow): satisfied
+drone.sysml:130:41  longEnough (ConstraintUsage, satisfies Drone::flightTime): satisfied
+drone.sysml:137:44  carriesParcel (ConstraintUsage, satisfies Drone::deliveryLoad): satisfied
+9 satisfied, 4 violated, 16 undecided
+(exit code 1)

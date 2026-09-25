@@ -1,0 +1,15 @@
+@startuml
+state "FlightModes" as n1 <<state def>> {
+  state "idle" as n2 <<state>>
+  state "cruising" as n3 <<state>>
+  state "delivering" as n4 <<state>>
+  state "returning" as n5 <<state>>
+  [*] --> n2
+  n2 --> n3 : Launch
+  n3 --> n4
+  n4 --> n5 : ParcelDropped
+  n3 --> n5 : LowBattery
+  n5 --> n2
+}
+[*] --> [*]
+@enduml

@@ -1,0 +1,3 @@
+$ sysmlv2 query drone.sysml size(ownedMember(Drone))
+35
+(exit code 0)

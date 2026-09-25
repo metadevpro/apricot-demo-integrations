@@ -1,0 +1,7 @@
+$ sysml drone.sysml   # REPL, then: %check Drone::Sizing::squarePanel
+✓ package Drone
+SysML v2 REPL — %help for commands, Ctrl-D to exit
+? Constraint squarePanel is undecided (z3, 14ms)
+  Reason: the evaluator cannot hold the value the solver chose for Drone::Sizing::panelSide: no rational in (root-obj (+ (^ x 2) (- 2)) 2)
+  standing: not covered (the evaluator cannot hold the value the solver chose for Drone::Sizing::panelSide: no rational in (root-obj (+ (^ x 2) (- 2)) 2))
+(exit code 0)

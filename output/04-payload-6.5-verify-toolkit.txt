@@ -1,0 +1,32 @@
+$ sysmlv2 verify drone.sysml    # drone.sysml with payload = 6.5
+drone.sysml:123:37  massOk (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:130:41  longEnough (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:137:44  carriesParcel (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:148:37  powerBudget (AssertConstraintUsage): satisfied
+drone.sysml:151:41  flightTimeCheck (AssertConstraintUsage): satisfied
+drone.sysml:186:13  heavyLift (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:199:43  packCatalogue (AssertConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:200:41  packUnder25 (AssertConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:201:41  packFlies30 (AssertConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:206:37  bayFits (AssertConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:207:40  bayFlies30 (AssertConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:212:48  featherweight (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:213:43  longHaul (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:214:41  parcel (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:215:49  affordablePack (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:223:33  bigBattery (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:232:13  rotorFits (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:237:13  rotorCompact (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:243:34  squarePanel (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:252:44  lifts (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:253:47  tipSpeed (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:264:46  flies30 (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:265:46  under25 (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:266:50  nonNegative (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:279:53  <anonymous> (ConstraintUsage): undecided (result is indeterminate over unbound features)
+drone.sysml:324:37  reserve (AssertConstraintUsage): satisfied
+drone.sysml:123:37  massOk (ConstraintUsage, satisfies Drone::mtow): satisfied
+drone.sysml:130:41  longEnough (ConstraintUsage, satisfies Drone::flightTime): satisfied
+drone.sysml:137:44  carriesParcel (ConstraintUsage, satisfies Drone::deliveryLoad): satisfied
+6 satisfied, 0 violated, 23 undecided
+(exit code 0)

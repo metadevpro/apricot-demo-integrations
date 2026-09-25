@@ -1,0 +1,3 @@
+$ sysmlv2 query drone.sysml sum(ownedFeature(Drone::drone)->select { in p; p istype Drone::Component }->collect { in p; p.cost })
+2860
+(exit code 0)

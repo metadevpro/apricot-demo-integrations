@@ -1,0 +1,10 @@
+$ sysml -query oslc.where=rdf:type="PartUsage" and sysml:owner="Drone::drone"&oslc.select=sysml:name&oslc.orderBy=-sysml:name drone.sysml
+✓ package Drone
+Drone::drone::motors  PartUsage  sysml:name=motors
+Drone::drone::gripper  PartUsage  sysml:name=gripper
+Drone::drone::gps  PartUsage  sysml:name=gps
+Drone::drone::controller  PartUsage  sysml:name=controller
+Drone::drone::camera  PartUsage  sysml:name=camera
+Drone::drone::battery  PartUsage  sysml:name=battery
+Drone::drone::airframe  PartUsage  sysml:name=airframe
+(exit code 0)

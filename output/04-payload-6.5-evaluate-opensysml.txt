@@ -1,0 +1,5 @@
+$ sysml -e Drone::drone.endurance drone.sysml    # drone.sysml with payload = 6.5
+✓ package Drone
+✓ Drone::drone.endurance
+  = 29.34963868816009
+(exit code 0)

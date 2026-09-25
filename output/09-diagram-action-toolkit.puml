@@ -1,0 +1,26 @@
+@startuml
+state "(action)" as n1 <<action>>
+state "DeliveryMission" as n2 <<action def>> {
+  state "takeOff" as n3 <<action>> {
+    state "(assignment action)" as n8 <<assignment action>>
+  }
+  state "cruiseOut" as n4 <<action>> {
+    state "(assignment action)" as n9 <<assignment action>>
+  }
+  state "release" as n5 <<action>> {
+    state "(assignment action)" as n10 <<assignment action>>
+  }
+  state "cruiseBack" as n6 <<action>> {
+    state "(assignment action)" as n11 <<assignment action>>
+  }
+  state "land" as n7 <<action>> {
+    state "(assignment action)" as n12 <<assignment action>>
+  }
+  [*] --> n3
+  n3 --> n4
+  n4 --> n5
+  n5 --> n6
+  n6 --> n7
+  n7 --> [*]
+}
+@enduml

@@ -1,0 +1,2 @@
+$ sysmlv2 check --strict drone.sysml
+(exit code 0)

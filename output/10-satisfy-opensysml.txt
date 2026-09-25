@@ -1,0 +1,13 @@
+$ sysml -satisfy drone.sysml
+✓ package Drone
+✓ satisfy mtow by drone holds (on Drone::drone ID: 1)
+✓ Verification Drone::weighDrone verdict: pass
+  standing: holds (observed: 1 run under reverse)
+✓ satisfy flightTime by drone holds (on Drone::drone ID: 1)
+  standing: holds (observed: 1 run under reverse)
+✓ satisfy deliveryLoad by drone holds (on Drone::drone ID: 1)
+  standing: holds (observed: 1 run under reverse)
+✓ satisfy mtow holds
+✓ Verification Drone::weighDrone verdict: pass
+  standing: holds (observed: 1 run under reverse)
+(exit code 0)

@@ -1,0 +1,4 @@
+$ sysml -validate drone.sysml
+✓ package Drone
+✓ drone.sysml: no errors
+(exit code 0)

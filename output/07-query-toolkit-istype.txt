@@ -1,0 +1,3 @@
+$ sysmlv2 query drone.sysml Drone::drone.battery istype Drone::Motor
+false
+(exit code 0)

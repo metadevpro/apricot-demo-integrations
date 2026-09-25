@@ -1,0 +1,14 @@
+$ sysml -analysis Drone::droneExtraLoad -sweep extraKg=0.0..1.5:0.25 drone.sysml
+✓ package Drone
+sweep Drone::droneExtraLoad — 7 run(s)
+extraKg | minutes            | verdict                   | time
+--------+--------------------+---------------------------+---------
+0.0     | 32.01940570042451  | stillFlies: satisfied     | 11.298ms
+0.25    | 31.541218637992834 | stillFlies: satisfied     | 8.956ms
+0.5     | 31.077104178928785 | stillFlies: satisfied     | 13.475ms
+0.75    | 30.626450116009284 | stillFlies: satisfied     | 8.345ms
+1.0     | 30.188679245283023 | stillFlies: satisfied     | 8.164ms
+1.25    | 29.763246899661784 | stillFlies: not satisfied | 7.972ms
+1.5     | 29.34963868816009  | stillFlies: not satisfied | 13.365ms
+  standing: table (observed: 7 rows)
+(exit code 1)

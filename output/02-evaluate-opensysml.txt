@@ -1,0 +1,11 @@
+$ sysml -e Drone::drone.motorMass -e Drone::drone.takeoffMass -e Drone::drone.hoverPower -e Drone::drone.endurance drone.sysml
+✓ package Drone
+✓ Drone::drone.motorMass
+  = 2.2
+✓ Drone::drone.takeoffMass
+  = 16.15
+✓ Drone::drone.hoverPower
+  = 1648.9999999999998
+✓ Drone::drone.endurance
+  = 32.01940570042451
+(exit code 0)

@@ -1,0 +1,6 @@
+$ sysml -constraint Drone::flightTimeCheck drone.sysml    # drone.sysml with payload = 6.5
+✓ package Drone
+✗ Constraint Drone::flightTimeCheck failed
+  Assertion evaluated to false: drone.endurance >= 30.0
+  standing: violated (witnessed: 1 run under reverse)
+(exit code 1)

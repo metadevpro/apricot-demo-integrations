@@ -1,0 +1,4 @@
+$ sysml -query oslc.where=sysml:type="Drone::Motor"&oslc.select=sysml:multiplicityLower,sysml:multiplicityUpper drone.sysml
+✓ package Drone
+Drone::Quadcopter::motors  PartUsage  sysml:multiplicityLower=4  sysml:multiplicityUpper=4
+(exit code 0)

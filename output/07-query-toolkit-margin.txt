@@ -1,0 +1,3 @@
+$ sysmlv2 query drone.sysml Drone::drone.endurance - 30.0
+5.579514824797847
+(exit code 0)

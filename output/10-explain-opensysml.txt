@@ -1,0 +1,10 @@
+$ sysml drone.sysml   # REPL, then: %explain Drone::Sizing::ambitious
+✓ package Drone
+SysML v2 REPL — %help for commands, Ctrl-D to exit
+✗ Requirement ambitious is unsatisfiable: 3 conditions conflict (z3, 90ms)
+  Every condition below is needed: dropping any one leaves the rest satisfiable.
+  1. required condition: `6750 + 4 * capacity + payload <= 12000` — requirement ambitious, declared by featherweight, at <repl>:212:48
+  2. required condition: `480 * capacity >= 45 * 6750 + 4 * capacity + payload + 340` — requirement ambitious, declared by longHaul, at <repl>:213:43
+  3. required condition: `payload >= 5000` — requirement ambitious, declared by parcel, at <repl>:214:41
+  standing: unsatisfiable (proved over inputs: 1 query by solve)
+(exit code 0)

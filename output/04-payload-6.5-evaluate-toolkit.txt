@@ -1,0 +1,3 @@
+$ sysmlv2 eval drone.sysml Drone::drone::endurance    # drone.sysml with payload = 6.5
+Drone::drone::endurance = 32.313341493268055
+(exit code 0)

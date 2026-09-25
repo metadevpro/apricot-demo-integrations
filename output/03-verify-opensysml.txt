@@ -1,0 +1,10 @@
+$ sysml -constraint Drone::powerBudget -constraint Drone::flightTimeCheck -constraint Drone::Sizing::heavyLift drone.sysml
+✓ package Drone
+✓ Constraint Drone::powerBudget passed
+  standing: holds (observed: 1 run under reverse)
+✓ Constraint Drone::flightTimeCheck passed
+  standing: holds (observed: 1 run under reverse)
+? Constraint Drone::Sizing::heavyLift could not be evaluated
+  Error: constraint heavyLift: assertion evaluation failed: no value: condition is undetermined: payload has no value in the model
+  standing: not covered (constraint heavyLift: assertion evaluation failed: no value: condition is undetermined: payload has no value in the model)
+(exit code 2)
